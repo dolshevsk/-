@@ -36,7 +36,7 @@ def cats():
         return jsonify({"error": "offset can't be negative"}), 400
     limit = request.args.get('limit', default=None, type=int)
     if isinstance(limit, int) and limit <= 0:
-        return jsonify({"error": "limit can't be negative"}), 400
+        return jsonify({"error": "limit can't be negative or zero"}), 400
     dict_order = {"asc": False, "desc": True}
     json_list = []
 
