@@ -40,15 +40,15 @@ class BasicTestCase(unittest.TestCase):
 
         rv = client.post('/cat', data="{\"name\": 2213, \"color\": \"red & white\", "
                                       "\"tail_length\": 15, \"whiskers_length\": 12}")
-        assert b'Invalid name' in rv.data
+        assert b'invalid name' in rv.data
 
         rv = client.post('/cat', data="{\"name\": \"Tomas\", \"color\": \"2134\", "
                                       "\"tail_length\": 15, \"whiskers_length\": 12}")
-        assert b'This color is not allowed' in rv.data
+        assert b'this color is not allowed' in rv.data
 
         rv = client.post('/cat', data="{\"name\": \"Tomas\", \"color\": \"red & white\", "
                                       "\"tail_length\": -15, \"whiskers_length\": -12}")
-        assert b'Integers should be positive' in rv.data
+        assert b'integers should be positive' in rv.data
 
 
 if __name__ == '__main__':

@@ -53,9 +53,9 @@ def cats():
             try:
                 json_list.sort(key=lambda column: column[attribute], reverse=dict_order[order])
             except KeyError:
-                return jsonify({"error": "Invalid attribute"}), 400
+                return jsonify({"error": "invalid attribute"}), 400
         else:
-            return jsonify({"error": "Invalid order"}), 400
+            return jsonify({"error": "invalid order"}), 400
     if json_list:
         return jsonify(json_list)
     else:
@@ -71,26 +71,25 @@ def cat():
     try:
         reader = request.get_json(force=True)
         new_cat = Cats(**reader)
+        name, color, tail_length, whiskers_length = new_cat.name, new_cat.color, new_cat.tail_length, new_cat.whiskers_length
     except:
-        return jsonify({"error": "Data should be json format"}), 400
-    name, color, tail_length, whiskers_length = new_cat.name, new_cat.color, new_cat.tail_length, new_cat.whiskers_length
+        return jsonify({"error": "data should be json format"}), 400
     try:
         check_name = Cats.query.get(name)
         if not isinstance(name, str) or name.capitalize() != name:
-            return jsonify({"error": "Invalid name type or format"}), 400
+            return jsonify({"error": "invalid name type or format"}), 400
     except:
-        return jsonify({"error": "Invalid name type or format"}), 400
-    try:
-        Cats.query.filter_by(color=color).first()
-    except:
-        return jsonify({"error": "This color is not allowed"}), 400
+        return jsonify({"error": "invalid name type or format"}), 400
+    color_list = ('black','white','black & white','red','red & white','red & black & white')
+    if color not in color_list:
+        return jsonify({"error": "this color is not allowed"}), 400
     if check_name:
-        return jsonify({"error": "This name already exists"}), 400
+        return jsonify({"error": "this name already exists"}), 400
     try:
         if tail_length < 0 or whiskers_length < 0:
-            return jsonify({"error": "Integers should be positive"}), 400
+            return jsonify({"error": "integers should be positive"}), 400
     except:
-        return jsonify({"error": "Tail_length, whiskers_length should be type integer"}), 400
+        return jsonify({"error": "tail_length, whiskers_length should be type integer"}), 400
 
     db.session.add(new_cat)
     db.session.commit()

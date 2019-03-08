@@ -18,7 +18,7 @@ pip install virtualenv
 virtualenv ENV
 source /path/to/ENV/bin/activate
 ```
-Скачиваем нужные пакеты. На данном этапе удобнее всего перейти в скаченную папку flask.
+Скачиваем нужные пакеты. 
 ```
 pip install -r /path/to/flask/requirements.txt
 ```
@@ -32,5 +32,3 @@ pip install -r /path/to/flask/requirements.txt
 python /path/to/flask/psql.py
 python /path/to/flask/app.py
 ```
-p.s. В тестовом задании 4 для того, чтобы curl запросы работали корректо, нужно url обвешивать кавычками.
-например ```curl -X GET "http://localhost:8080/cats?attribute=color&order=asc&offset=5&limit=2"```.
