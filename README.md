@@ -1,7 +1,7 @@
 #  Тестовое задание wg_forge_backend (Python)
 ## Настройка
 ### 1) Postgres
-Нужно подготовить базу данных Postgress на вашем компьютере, инструкции есть в самом тестовом задании. Я подключался к докеру. [докер инструкция](https://github.com/wgnet/wg_forge_backend/blob/master/docker_instructions.md).
+Нужно подготовить субд Postgress. Инструкции есть в самом тестовом задании. Я подключался к докеру. [Докер инструкция](https://github.com/wgnet/wg_forge_backend/blob/master/docker_instructions.md).
 ### 2) Файлы с решенным тестовым заданием
 Скачиваем из моего [репозитория](https://github.com/dolshevsk/test-work) папку flask.
 ### 3) virtualenv and pip
