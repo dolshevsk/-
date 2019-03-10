@@ -14,7 +14,6 @@ def second():
                   whiskers_length_mean, whiskers_length_median, whiskers_length_mode)
                   SELECT round(avg(tail_length), 1), PERCENTILE_CONT(0.5)
                   WITHIN GROUP (ORDER BY tail_length), ARRAY[mode()
-                  WITHIN GROUP (ORDER BY tail_length ASC), mode()
                   WITHIN GROUP (ORDER BY tail_length DESC)], round(avg(whiskers_length), 1), PERCENTILE_CONT(0.5)
                   WITHIN GROUP (ORDER BY whiskers_length), ARRAY[mode()
                   WITHIN GROUP (ORDER BY whiskers_length ASC), mode()
