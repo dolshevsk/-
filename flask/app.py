@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, redirect
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from models import *
+import re
 
 app = Flask(__name__)
 # Exercise 6
@@ -76,10 +77,11 @@ def cat():
         return jsonify({"error": "data should be json format"}), 400
     try:
         check_name = Cats.query.get(name)
-        if not isinstance(name, str) or name.capitalize() != name:
-            return jsonify({"error": "invalid name type or format"}), 400
+        result= re.match("^[A-Z][a-z]+$",name) 
+        if not result:
+            return jsonify({"error": "name should consist only letters, first letter upper case"}), 400
     except:
-        return jsonify({"error": "invalid name type or format"}), 400
+        return jsonify({"error": "invalid name type"}), 400
     color_list = ('black','white','black & white','red','red & white','red & black & white')
     if color not in color_list:
         return jsonify({"error": "this color is not allowed"}), 400
