@@ -32,3 +32,14 @@ pip install -r /path/to/flask/requirements.txt
 python /path/to/flask/psql.py
 python /path/to/flask/app.py
 ```
+### 6) Requests
+```
+curl -X GET http://localhost:8080/ping
+curl -X GET http://localhost:8080/cats
+curl -X GET http://localhost:8080/cats?attribute=name&order=asc
+curl -X GET http://localhost:8080/cats?attribute=tail_length&order=desc
+curl -X GET http://localhost:8080/cats?offset=10&limit=10
+curl -X GET http://localhost:8080/cats?attribute=color&order=asc&offset=5&limit=2
+curl -X POST http://localhost:8080/cat \
+-d "{\"name\": \"Tihon\", \"color\": \"red & white\", \"tail_length\": 15, \"whiskers_length\": 12}"
+```
